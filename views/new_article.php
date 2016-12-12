@@ -8,9 +8,7 @@
 	</p>
 	<p>
 		<label>Contenu</label>
-		<textarea rows="4" cols="50" name="content" form="form_article">
-			<?php if (isset($_POST['content'])) { echo $_POST['content']; } ?>
-		</textarea>
+		<textarea rows="4" cols="50" name="content"><?php if (isset($_POST['content'])) { echo $_POST['content']; } ?></textarea>
 		<?php if (isset($_POST['err_content'])) { echo '<span class="error">' . $_POST['err_content'] . '</span>'; } ?>
 	</p>
 

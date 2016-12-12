@@ -23,3 +23,7 @@ function selectArticleByUpdatedDate ($date) {
 function selectUserPosts ($id) {
 	return select('user', ['article.*'], 'JOIN article ON user.id = article.user_id WHERE id = ' . $id);
 }
+
+function insertUserArticle ($values, $fields) {
+	return insert('article', $values, $fields);
+}
