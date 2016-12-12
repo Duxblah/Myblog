@@ -15,3 +15,11 @@ body {
 	color: #CC0000;
 	font-weight: bold;
 }
+ul#nav_blog li { 
+	display : inline;
+	padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+}
+
+ul#nav_blog {
+	list-style-type : none; /* Car sinon les puces se placent n'importe où */
+}
