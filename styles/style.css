@@ -1,5 +1,7 @@
 body {
 	font-family: 'Noto Sans', sans-serif;
+	padding: 0;
+	margin: 0;
 }
 
 #container {
@@ -8,18 +10,37 @@ body {
 	min-height: 560px;
 	margin: auto;
 	padding: 20px;
-	background-color: grey;
+	background-color: #B0B0B0;
 }
 
 .error {
 	color: #CC0000;
 	font-weight: bold;
 }
-ul#nav_blog li { 
-	display : inline;
-	padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+
+#header {
+	background-color: brown;
+	height: 50px;
+	margin-top: 0;
+	padding-top: 0;
+	display: flex;
 }
 
 ul#nav_blog {
 	list-style-type : none; /* Car sinon les puces se placent n'importe où */
+	margin: auto;
+}
+
+ul#nav_blog li { 
+	display : inline;
+	padding : 0 5em; /* Pour espacer les boutons entre eux */
+}
+
+ul#nav_blog li a { 
+	color: white;
+	text-decoration: none;
+}
+
+#form-login {
+	float: right;
 }

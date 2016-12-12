@@ -20,8 +20,8 @@ function selectArticleByUpdatedDate ($date) {
 	return select('article', [], 'WHERE updated = "' . $date . '"')[0];
 }
 
-function selectUserPosts ($id) {
-	return select('user', ['article.*'], 'JOIN article ON user.id = article.user_id WHERE id = ' . $id);
+function selectUserArticles ($id) {
+	return select('user', ['article.*'], 'JOIN article ON user.id = article.id_user WHERE user.id = ' . $id);
 }
 
 function insertUserArticle ($values, $fields) {

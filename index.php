@@ -20,6 +20,7 @@ if (
 }
 
 $template = $p;
+$title = $p;
 
 // Controller
 if ($p !== 'home') {
