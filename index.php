@@ -19,7 +19,6 @@ if (
 
 $template = $p;
 
-
 // Controller
 if ($p !== 'home') {
 	if (file_exists('controller/' . $p . '.php')) {
