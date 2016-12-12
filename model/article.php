@@ -1,11 +1,11 @@
 <?php
 
 function selectAllArticles () {
-	return select('article', [], '');
+	return select('article', ['article.*, user.pseudo as user'], 'JOIN user ON user.id = article.id_user');
 }
 
 function selectArticleById ($id) {
-	return select('article', [], 'WHERE id = ' . $id)[0];
+	return select('article', ['article.*, user.pseudo as user'], 'JOIN user ON user.id = article.id_user WHERE article.id = ' . $id)[0];
 }
 
 function selectArticleByTitle ($title) {

@@ -1,5 +1,4 @@
 <?php
-
 	function startConnection () {
 		global $mysqlConnect;
 
@@ -25,9 +24,9 @@
 		} else {
 			foreach ($fields as $field) {
 				if ($field === $fields[0]) {
-					$sql .= '`' . $field . '`';
+					$sql .= $field;
 				} else {
-					$sql .= ',`' . $field . '`';
+					$sql .= ',' . $field;
 				}
 			}
 		}
@@ -55,7 +54,7 @@
 					$sql .= ',';
 				}
 
-				$sql .= '`' . $field . '`';
+				$sql .= $field;
 			}
 
 			$sql .= ') ';

@@ -5,6 +5,9 @@
 	<link href="styles/g.css" rel="stylesheet">
 </head>
 <body>
+	<div id="header">
+		<a href="?">HOME</a>
+	</div>
 	<div id="container">
 		<?php include('views/' . $template.'.php'); ?>
 	</div>
