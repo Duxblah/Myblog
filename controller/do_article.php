@@ -17,7 +17,7 @@ function check_article () {
 $errors = check_article();
 
 if (empty($errors)){
-	$fields = ['title', 'content', 'user_id'];
+	$fields = ['title', 'content', 'id_user'];
 	$values = [escapeVar($_POST['title']), escapeVar($_POST['content']), '10'];
 	$errors = insertUserArticle($fields, $values);
 	var_dump($errors);
