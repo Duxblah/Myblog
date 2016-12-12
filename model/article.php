@@ -1,0 +1,25 @@
+<?php
+
+function selectAllArticles () {
+	return select('article', [], '');
+}
+
+function selectArticleById ($id) {
+	return select('article', [], 'WHERE id = ' . $id)[0];
+}
+
+function selectArticleByTitle ($title) {
+	return select('article', [], 'WHERE title = "' . $pseudo . '"')[0];
+}
+
+function selectArticleByCreationDate ($date) {
+	return select('article', [], 'WHERE created = "' . $date . '"')[0];
+}
+
+function selectArticleByUpdatedDate ($date) {
+	return select('article', [], 'WHERE updated = "' . $date . '"')[0];
+}
+
+function selectUserPosts ($id) {
+	return select('user', ['article.*'], 'JOIN article ON user.id = article.user_id WHERE id = ' . $id);
+}

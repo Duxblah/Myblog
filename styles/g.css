@@ -1,0 +1,17 @@
+body {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+#container {
+	width: 80%;
+	min-width: 720px;
+	min-height: 560px;
+	margin: auto;
+	padding: 20px;
+	background-color: grey;
+}
+
+.error {
+	color: #CC0000;
+	font-weight: bold;
+}
