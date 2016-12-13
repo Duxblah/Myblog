@@ -7,7 +7,12 @@
 </div>
 
 <div><?= $article['content'] ?></div>
-<div id="author_signature">Auteur: <a href="?p=single_user&id=<?= $article['id'] ?>"> <?= $article['user'] ?> </a></div>
+<div class="info_single_article">
+	<?php if($article['id_user'] == $_SESSION['user']){?>
+		<div id="modif_article"><a href="?p=single_user&id=<?= $article['id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier </a></div>
+	<?php } ?>
+	<div id="author_signature">Auteur: <a href="?p=single_user&id=<?= $article['id'] ?>"> <?= $article['user'] ?> </a></div>
+</div>
 <hr>
 
 <div id="comments_container">

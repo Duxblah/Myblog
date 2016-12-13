@@ -1,4 +1,4 @@
-<h1><?= $user['pseudo'] ?></h1>
+<h1>Profil de <?= $user['pseudo'] ?></h1>
 
 <div></div>
 

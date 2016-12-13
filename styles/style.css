@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('fontawesome-webfont');
+  src: url('fontawesome-webfont') format('embedded-opentype'), 
+  url('fontawesome-webfont.woff') format('woff'),
+  url('fontawesome-webfont.ttf') format('truetype'),
+  url('fontawesome-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
 	font-family: 'Noto Sans', sans-serif;
 	padding: 0;
@@ -146,7 +157,7 @@ textarea{
 #textarea_article{
 	height: 400px;
 }
-input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], input[type=reset], input[type=password]  {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -167,7 +178,9 @@ hr.comment_separator{
 	color: #819FF7;;
 }
 .comment_info_created{
-	font-size: 12px;
+    font-size: 12px;
+    font-style: italic;
+    color: #6E6E6E;
 }
 .comment_content{
 	margin: 15px 0;
@@ -176,4 +189,15 @@ hr.comment_separator{
 .see_more{
 	font-size: 13px;
     margin-left: 10px;
+}
+.fa{
+	margin: 0px 5px;
+}
+#form-login{
+	display: inline;
+	height: 100%;
+}
+#form-login > div{
+    width:500px;
+    height: 10px;
 }

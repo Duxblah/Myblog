@@ -3,6 +3,7 @@
 <head>
 	<title>SuperBlog | <?= ucfirst($title) ?></title>
 	<link href="styles/style.css" rel="stylesheet">
+	<link href="styles/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<div id="header">
@@ -11,8 +12,12 @@
 			<li><a href="?p=list_articles">Articles</a></li>
 
 			<?php if (! isset($_SESSION['user']) || empty($_SESSION['user'])) { ?>
-				<li><a href="?p=signup">S'enregistrer</a></li>
-				<?php include('views/login.php'); ?>
+				<li>
+					<a href="?p=signup">S'enregistrer</a>
+				</li>
+				<li>
+					<?php include('views/login.php'); ?>
+				</li>
 			<?php } else { ?>
 				<li><a href="?p=new_article">Nouveau</a></li>
 				<li><a href="?p=logout">Déconnexion</a></li>
@@ -20,7 +25,6 @@
 					<li><a href="?p=admin">Admin</a></li>
 				<?php } ?>
 			<?php } ?>
-
 		</ul>
 	</div>
 	<div id="container">
