@@ -9,10 +9,13 @@ function selectCommentsByPseudo ($pseudo) {
 }
 
 function selectCommentsByUserId ($id) {
-	return select('comment', ['comment.*'], 'JOIN user ON user.id = comment.user_id WHERE user.id = ' . $id);
+	return select('comment', ['comment.*'], 'JOIN user ON user.id = comment.id_user WHERE user.id = ' . $id);
 }
 
 function selectCommentsByArticleId ($id) {
-	return select('comment', ['comment.*'], 'JOIN article ON article.id = comment.article_id WHERE article.id = ' . $id);
+	return select('comment', ['comment.*', 'user.pseudo'], 'JOIN user ON user.id = comment.id_user JOIN article ON article.id = comment.id_article WHERE article.id = ' . $id );
 }
 
+function insertUserComment ($values, $fields) {
+	return insert('comment', $values, $fields);
+}

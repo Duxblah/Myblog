@@ -14,7 +14,7 @@
 				<li><a href="?p=signup">Register</a></li>
 				<?php include('views/login.php'); ?>
 			<?php } else { ?>
-				<li><a href="?p=new_article">New article</a></li>
+				<li><a href="?p=new_article">Write</a></li>
 				<li><a href="?p=logout">Logout</a></li>
 				<?php if ($_SESSION['user']) { ?>
 					<li><a href="?p=admin.php">Admin</a></li>

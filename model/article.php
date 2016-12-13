@@ -1,7 +1,7 @@
 <?php
 
 function selectAllArticles () {
-	return select('article', ['article.*, user.pseudo as user'], 'JOIN user ON user.id = article.id_user');
+	return select('article', ['article.*, user.pseudo as user'], 'JOIN user ON user.id = article.id_user ORDER BY created DESC');
 }
 
 function selectArticleById ($id) {

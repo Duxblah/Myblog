@@ -1,25 +1,20 @@
 <table id="list-articles">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Content</th>
-			<th>User</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach ($articles as $article): ?>
-			<?php
-				$content = $article['content'];
-				if (strlen($content) > 30) {
-					$content = substr($content, 27) . '...';
-				}
-			?>
-
-			<tr>
-				<td><a href="?p=single_article&id=<?= $article['id'] ?>"><?= $article['title']; ?></a></td>
-				<td><a href="?p=single_article&id=<?= $article['id'] ?>"><?= $content; ?></a></td>
-				<td><a href="?p=single_user&id=<?= $article['id_user'] ?>"><?= $article['user']; ?></a></td>
-			</tr>
-		<?php endforeach; ?>
-	</tbody>
+	<h1>Derniers actualités</h1>
+	<?php foreach ($articles as $article): ?>
+		<?php
+			$content = $article['content'];
+			if (strlen($content) > 250) {
+				$content = substr($content, 0, 450) . '...';
+			}
+		?>
+		<h3><a href="?p=single_article&id=<?= $article['id'] ?>"><?= $article['title']; ?></a></h3>
+		<div class="article_resume"><?= $content; ?></a></div>
+		<h4>Informations sur l'article</h4>
+		<div class="article_info" >
+			<div class="article_info_author">Ecrit par <a class="link_author" href="?p=single_user&id=<?= $article['id_user'] ?>"><?= $article['user']; ?></a></div>
+			<div class="article_info_created">Le <a class="link_date" href="?p=single_user&id=<?= $article['id_user'] ?>"><?= $article['created']; ?></a></div>
+			<div class="article_info_comments">Commentaires (0)</div>
+		</div>
+		<hr>
+	<?php endforeach; ?>
 </table>
