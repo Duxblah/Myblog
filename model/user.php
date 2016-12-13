@@ -1,6 +1,6 @@
 <?php
 
-function selectAllUsers ($id) {
+function selectAllUsers () {
 	return select('user', [], '');
 }
 

@@ -7,19 +7,20 @@
 <body>
 	<div id="header">
 		<ul id="nav_blog">
-			<li><a href="?p=home.php">Home</a></li>
+			<li><a href="?p=home.php">Accueil</a></li>
 			<li><a href="?p=list_articles">Articles</a></li>
 
 			<?php if (! isset($_SESSION['user']) || empty($_SESSION['user'])) { ?>
-				<li><a href="?p=signup">Register</a></li>
+				<li><a href="?p=signup">S'enregistrer</a></li>
 				<?php include('views/login.php'); ?>
 			<?php } else { ?>
-				<li><a href="?p=new_article">Write</a></li>
-				<li><a href="?p=logout">Logout</a></li>
+				<li><a href="?p=new_article">Nouveau</a></li>
+				<li><a href="?p=logout">Déconnexion</a></li>
 				<?php if ($_SESSION['user']) { ?>
-					<li><a href="?p=admin.php">Admin</a></li>
+					<li><a href="?p=admin">Admin</a></li>
 				<?php } ?>
 			<?php } ?>
+
 		</ul>
 	</div>
 	<div id="container">

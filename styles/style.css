@@ -40,13 +40,18 @@ a:visited {
 }
 
 ul#nav_blog {
-	list-style-type : none; /* Car sinon les puces se placent n'importe où */
+	list-style-type : none; 
 	margin: auto;
 }
 
 ul#nav_blog li { 
 	display : inline;
-	padding : 0 5em; /* Pour espacer les boutons entre eux */
+	padding-left: 20px;
+}
+
+ul#nav_blog li:last-child { 
+	float:right;
+	margin-right: 20px;
 }
 
 ul#nav_blog li a { 
