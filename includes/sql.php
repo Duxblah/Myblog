@@ -37,8 +37,10 @@
 
 		if ($result) {
 			return mysqli_fetch_all($result, MYSQLI_ASSOC);
+		} else {
+			var_dump($sql);die;
 		}
-		
+
 		return $result;
 	}
 
@@ -83,22 +85,30 @@
 		global $mysqlConnect;
 		$sql = 'UPDATE ' . $table . ' ';
 
-		$sql .= 'SET (';
+		$sql .= 'SET ';
 		$i = 0;
 
 		foreach ($values as $key => $value) {
 			if ($i !== 0) {
-				$sql .= ',';
+				$sql .= ', ';
 			}
 
-			$sql .= '"' . $key . '" = "' . $value . '"';
+			$sql .= $key . ' = "' . $value . '"';
 
 			$i++;
 		}
 
-		$sql .= ') ' . $conditions;
+		$sql .= ' ' . $conditions;
 
-		return mysqli_query($mysqlConnect, $sql);
+		$result = mysqli_query($mysqlConnect, $sql);
+
+		if ($result) {
+			return true;
+		} else {
+			var_dump($sql);die;
+		}
+
+		return $result;
 	}
 
 	function delete ($table, $conditions = '') {

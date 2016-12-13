@@ -8,7 +8,7 @@ function selectArticleById ($id) {
 	return select('article', ['article.*, user.pseudo as user'], 'JOIN user ON user.id = article.id_user WHERE article.id = ' . $id)[0];
 }
 
-function selectArticleIdByCommeny ($id) {
+function selectArticleIdByComment ($id) {
 	return select('article', ['article.id'], 'JOIN comment ON comment.id = article.id_user WHERE article.id = ' . $id)[0];
 }
 function selectArticleByTitle ($title) {
@@ -29,4 +29,28 @@ function selectUserArticles ($id) {
 
 function insertUserArticle ($values, $fields) {
 	return insert('article', $values, $fields);
+}
+
+function updateArticle ($fields, $values) {
+	$association = array();
+	$id = 0;
+
+	for ($i = 0; $i < count ($values); $i++) {
+		if ($fields[$i] == 'id') {
+			$id = $values[$i];
+		} else {
+			$association[$fields[$i]] = $values[$i];
+		}
+	}
+
+	if ($id) {
+		return update('article', $association, 'WHERE id = ' . $id);
+	} else {
+		echo $id;
+		die;
+	}
+}
+
+function deleteArticle ($id) {
+	return delete('article', 'WHERE id = ' . $id);
 }

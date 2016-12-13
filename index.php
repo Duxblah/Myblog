@@ -32,5 +32,5 @@ if ($p !== 'home') {
 if (file_exists('views/' . $template.'.php')) {
 	include('layout/' . $layout . '.php');
 } else {
-	header('Location: ?error=views/' . $template . '.php');
+	header('Location: ?');
 }

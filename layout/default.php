@@ -4,6 +4,8 @@
 	<title>SuperBlog | <?= ucfirst($title) ?></title>
 	<link href="styles/style.css" rel="stylesheet">
 	<link href="styles/font-awesome.min.css" rel="stylesheet">
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
 	<div id="header">

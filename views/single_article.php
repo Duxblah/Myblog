@@ -8,10 +8,11 @@
 
 <div><?= $article['content'] ?></div>
 <div class="info_single_article">
-	<?php if($article['id_user'] == $_SESSION['user']){?>
-		<div id="modif_article"><a href="?p=single_user&id=<?= $article['id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier </a></div>
+	<?php if(isset($_SESSION['user']) && $article['id_user'] == $_SESSION['user']){?>
+		<div id="modif_article"><a href="?p=modify_article&id=<?= $article['id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier </a></div>
+		<div id="delete_article"><a href="?p=delete_article&id=<?= $article['id'] ?>"><i class="fa fa-times" aria-hidden="true"></i>Supprimer </a></div>
 	<?php } ?>
-	<div id="author_signature">Auteur: <a href="?p=single_user&id=<?= $article['id'] ?>"> <?= $article['user'] ?> </a></div>
+	<div id="author_signature">Auteur: <a href="?p=single_user&id=<?= $article['id_user'] ?>"> <?= $article['user'] ?> </a></div>
 </div>
 <hr>
 
