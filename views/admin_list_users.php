@@ -20,7 +20,13 @@ include('nav_admin.php');
 	<tr>
        <td><a href="?p=single_user&id=<?= $user['id'] ?>"><?= $user['pseudo']; ?></a></td>
        <td><? echo $user['email']?></td>
-       <td><select></select></td>
+       <td>
+	       <select>
+	       	<?php foreach ($roles as $role): ?>
+	       		<option value="<?php echo $role['id']?>" <? if($user['id_role'] == $role['id']) echo "selected" ?> ><?php echo $role['label'] ?></option>
+	       	<?php endforeach; ?>
+	       </select>
+       </td>
        <td><?= $user['created'] ?></td>
        <td><a href="?p=delete_user_admin&id=<?= $user['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i>Supprimer </a></td>
     </tr>

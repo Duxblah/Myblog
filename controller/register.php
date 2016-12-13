@@ -25,8 +25,8 @@ function check_signup () {
 $errors = check_signup();
 
 if (empty($errors)) {
-	$fields = ['pseudo', 'email', 'password'];
-	$values = [escapeVar($_POST['pseudo']), escapeVar($_POST['email']), sha1($_POST['password'])];
+	$fields = ['pseudo', 'email', 'password', 'id_role'];
+	$values = [escapeVar($_POST['pseudo']), escapeVar($_POST['email']), sha1($_POST['password']), '1'];
 
 	if (insert('user', $fields, $values)) {
 		$message = 'You are now registered !';
