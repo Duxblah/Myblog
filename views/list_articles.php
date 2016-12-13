@@ -3,7 +3,7 @@
 	<?php foreach ($articles as $article): ?>
 		<?php
 			$content = $article['content'];
-			if (strlen($content) > 250) {
+			if (strlen($content) > 450) {
 				$content = substr($content, 0, 450) . '...';
 			}
 		?>
