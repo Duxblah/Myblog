@@ -39,6 +39,10 @@ a:visited {
 	color: #CC0000;
 	font-weight: bold;
 }
+.valide {
+	color: #31B404;
+	font-weight: bold;
+}
 
 #header {
 	background-color: #819FF7;
