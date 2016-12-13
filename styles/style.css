@@ -41,6 +41,11 @@ ul#nav_blog li a {
 	text-decoration: none;
 }
 
+ul#nav_blog li a:hover { 
+	cursor: pointer;
+	color: #BBB;
+}
+
 #form-login {
 	float: right;
 }

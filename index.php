@@ -12,10 +12,7 @@ require_once('includes/sql.php');
 startConnection();
 
 // Router
-if (
-	($p === 'article' && ! isset($_GET['id']))
-		|| ! $p
-	) {
+if (! $p) {
 	$p = 'home';
 }
 
@@ -35,5 +32,5 @@ if ($p !== 'home') {
 if (file_exists('views/' . $template.'.php')) {
 	include('layout/' . $layout . '.php');
 } else {
-	header('Location: ?');
+	header('Location: ?error=views/' . $template . '.php');
 }

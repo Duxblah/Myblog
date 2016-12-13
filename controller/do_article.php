@@ -1,7 +1,6 @@
 <?php 
 
 require_once('model/article.php');
-var_dump($_POST);
 function check_article () {
 	$errors = [];
 	if (empty($_POST['title'])) {
@@ -16,12 +15,19 @@ function check_article () {
 
 $errors = check_article();
 
-if (empty($errors)){
-	$fields = ['title', 'content', 'user_id'];
-	$values = [escapeVar($_POST['title']), escapeVar($_POST['content']), '10'];
-	$errors = insertUserArticle($fields, $values);
-	var_dump($errors);
-	$template = 'home';
+if (empty($errors)) {
+	$fields = ['title', 'content', 'id_user'];
+	$values = [escapeVar($_POST['title']), escapeVar($_POST['content']), $_SESSION['user']];
+	$id = insertUserArticle($fields, $values);
+
+	if ($id) {
+		$template = 'single_article';
+		header('Location: ?p=single_article&id=' . $id);
+	} else {
+		$template = 'home';
+		$_POST['err_internal'] = 'Internal error';
+		header('Location: ?');
+	}
 } else {
 	foreach ($errors as $key => $error) {
 		$_POST['err_' . $key] = $error;

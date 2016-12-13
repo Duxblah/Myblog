@@ -72,7 +72,11 @@
 
 		$sql .= ') ' . $conditions;
 
-		return mysqli_query($mysqlConnect, $sql);
+		if (mysqli_query($mysqlConnect, $sql)) {
+			return mysqli_insert_id($mysqlConnect);
+		}
+
+		return false;
 	}
 
 	function update ($table, $values = [], $conditions = '') {

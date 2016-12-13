@@ -1,6 +1,4 @@
-<a href="?">Home</a>
-
-<h1>Inscription</h1>
+<h1>Register</h1>
 
 <form action="?p=register" method="POST">
 	<p>
