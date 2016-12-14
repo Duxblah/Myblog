@@ -20,8 +20,8 @@
 		<?php foreach ($user['articles'] as $article): ?>
 			<?php
 				$content = $article['content'];
-				if (strlen($content) > 30) {
-					$content = substr($content, 27) . '...';
+				if (strlen($content) > 200) {
+					$content = substr($content, 0, 400) . '...';
 				}
 			?>
 			<tr>
