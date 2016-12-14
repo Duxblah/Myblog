@@ -1,4 +1,5 @@
 <?php
+require_once('comment.php');
 
 function selectAllArticles () {
 	return select('article', ['article.*, user.pseudo as user, count(comment.id) as nbr'], 'JOIN user ON user.id = article.id_user LEFT JOIN comment ON article.id = comment.id_article GROUP BY article.id ORDER BY article.created DESC ');
@@ -52,5 +53,37 @@ function updateArticle ($fields, $values) {
 }
 
 function deleteArticle ($id) {
-	return delete('article', 'WHERE id = ' . $id);
+	deleteCommentsOfArticle($id);
+
+	$conditions = 'WHERE id';
+
+	if (is_array($id)) {
+		$conditions .= ' IN (';
+
+		foreach ($id as $index => $i) {
+			if ($index != 0) {
+				$conditions .= ', ';
+			}
+
+			$conditions .= $i;
+		}
+
+		$conditions .= ')';
+	} else {
+		$conditions .= ' = ' . $id;
+	}
+
+	return delete('article', $conditions);
+}
+
+function deleteUserArticles ($id) {
+	$articles = selectUserArticles($id);
+
+	$ids = array();
+
+	foreach ($articles as $article) {
+		$ids[] = $article['id'];
+	}
+
+	return deleteArticle($ids);
 }

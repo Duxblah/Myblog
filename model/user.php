@@ -1,4 +1,5 @@
 <?php
+require_once('article.php');
 
 function selectAllUsers () {
 	return select('user', [], '');
@@ -34,4 +35,9 @@ function userAuth ($pseudo, $password) {
 	}
 
 	return $errors;
+}
+
+function deleteUser ($id) {
+	deleteUserArticles($id);
+	return delete('user', 'WHERE id = ' . $id);
 }

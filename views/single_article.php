@@ -33,9 +33,12 @@
 		<?php foreach ($comments as $comment): ?>
 			<div class="comments_infos">
 				<div class="comment_info_author">Posté par <a class="link_author" href="?p=single_user&id=<?= $comment['id_user'] ?>"><?= $comment['pseudo'] ?></a></div>
-				<div class="comment_info_created">Le <?=  $comment['created']; ?></a></div>
+				<div class="comment_info_created">Le <?= $comment['created']; ?></a></div>
 			</div>
 			<div class="comment_content"><?= $comment['content'] ?></a></div>
+			<?php if(isset($_SESSION['user']) && $comment['id_user'] == $_SESSION['user']){?>
+				<div id="delete_comment"><a href="?p=delete_comment&id=<?= $comment['id'] ?>"><i class="fa fa-times" aria-hidden="true"></i>Supprimer </a></div>
+			<?php } ?>
 			<hr class="comment_separator">
 		<?php endforeach; ?>
 	</div>
