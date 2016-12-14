@@ -37,6 +37,25 @@ function userAuth ($pseudo, $password) {
 	return $errors;
 }
 
+function updateUser ($fields, $values) {
+	$association = array();
+	$id = 0;
+
+	for ($i = 0; $i < count ($values); $i++) {
+		if ($fields[$i] == 'id') {
+			$id = $values[$i];
+		} else {
+			$association[$fields[$i]] = $values[$i];
+		}
+	}
+
+	if ($id) {
+		return update('user', $association, 'WHERE id = ' . $id);
+	} else {
+		echo $id;
+		die;
+	}
+}
 function deleteUser ($id) {
 	deleteUserArticles($id);
 	return delete('user', 'WHERE id = ' . $id);

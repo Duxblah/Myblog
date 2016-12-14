@@ -2,10 +2,10 @@
 include('nav_admin.php');
 ?>
 <table id="list_articles_admin">
-	<h1>Liste des articles</h1>
-	<?php if (isset($_POST['error'])) {
-		if($_POST['error'] == true)
-			echo '<tr class="table_valide"><td colspan=5><span class="valide">L\'article a bien été supprimé</span></td></tr>'; 
+	<h1>Liste des utilisateurs</h1>
+	<?php if (isset($errors)) {
+		if(empty($errors))
+			echo '<tr class="table_valide"><td colspan=5><span class="valide">Le rôle a bien été changé</span></td></tr>'; 
 		else
 			echo '<tr class="table_error"><td colspan=5><span class="error">Erreur lors de la suppression</span></td></tr>'; 
 	} ?>
@@ -21,11 +21,14 @@ include('nav_admin.php');
        <td><a href="?p=single_user&id=<?= $user['id'] ?>"><?= $user['pseudo']; ?></a></td>
        <td><? echo $user['email']?></td>
        <td>
-	       <select>
-	       	<?php foreach ($roles as $role): ?>
-	       		<option value="<?php echo $role['id']?>" <? if($user['id_role'] == $role['id']) echo "selected" ?> ><?php echo $role['label'] ?></option>
-	       	<?php endforeach; ?>
-	       </select>
+       		<form action="?p=edit_role&id=<?= $user['id'] ?>" method="POST" name="form_role">
+		        <select name="role">
+			       	<?php foreach ($roles as $role): ?>
+			       	<option value="<?php echo $role['id']?>" <? if($user['id_role'] == $role['id']) echo "selected" ?> ><?php echo $role['label'] ?></option>
+			       	<?php endforeach; ?>
+		        </select>
+		        <input class="button_change_role" value="Changer" type="submit">
+		    </form>
        </td>
        <td><?= $user['created'] ?></td>
        <td><a href="?p=delete_user_admin&id=<?= $user['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i>Supprimer </a></td>
