@@ -307,13 +307,16 @@ td, th {
 	margin: 0px -5px;
 }
 
-#input_login,#input_password{
+#input_login,#input_password, #input_search{
 	width:100px;
 	height: 30px;
     background-color: #ffffff;
     border: none;
     padding: 0px 16px;
     font-size: 14px;
+}
+#input_search{
+	width: 150px;
 }
 #input_login{
 	width:100px;
@@ -339,4 +342,17 @@ td, th {
 }
 .input_signup{
 	width:50%;
+}
+
+#form_articles{
+	display: inline;
+}
+
+#input_btn_search{
+	border: none;
+    color: white;
+    padding: 10px 0px;
+    text-decoration: none;
+    font-size: 21px;
+    background-color: #819FF7;
 }

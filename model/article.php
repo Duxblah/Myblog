@@ -13,7 +13,11 @@ function selectArticleIdByComment ($id) {
 	return select('article', ['article.id'], 'JOIN comment ON comment.id = article.id_user WHERE article.id = ' . $id)[0];
 }
 function selectArticleByTitle ($title) {
-	return select('article', [], 'WHERE title = "' . $pseudo . '"')[0];
+	return select('article', [], 'WHERE title = "' . $title . '"')[0];
+}
+
+function selectArticleBySearchTitle ($search) {
+	return select('article', ['article.*, user.pseudo as user, count(comment.id) as nbr'], 'JOIN user ON user.id = article.id_user LEFT JOIN comment ON article.id = comment.id_article WHERE title LIKE "%' . $search . '%" GROUP BY article.id ORDER BY article.created DESC ');
 }
 
 function selectArticleByCreationDate ($date) {
