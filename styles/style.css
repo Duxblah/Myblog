@@ -269,3 +269,9 @@ td, th {
 .trash_admin{
 	color:red;
 }
+.change_role_btn{
+	width:10px;
+}
+.fa-role-admin{
+	margin: 0px -5px;
+}

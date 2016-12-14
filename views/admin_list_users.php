@@ -27,7 +27,9 @@ include('nav_admin.php');
 			       	<option value="<?php echo $role['id']?>" <? if($user['id_role'] == $role['id']) echo "selected" ?> ><?php echo $role['label'] ?></option>
 			       	<?php endforeach; ?>
 		        </select>
-		        <input class="button_change_role" value="Changer" type="submit">
+		        <button type="submit" class="change_role_btn">
+    				<i class="fa fa-check fa-role-admin"></i>
+				</button>
 		    </form>
        </td>
        <td><?= $user['created'] ?></td>
