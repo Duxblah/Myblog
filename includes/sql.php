@@ -2,7 +2,7 @@
 	function startConnection () {
 		global $mysqlConnect;
 
-		$mysqlConnect = mysqli_connect('localhost', 'root', 'root', 'ecv_myblog');
+		$mysqlConnect = mysqli_connect('localhost', 'root', '', 'ecv_myblog');
 
 		if (! $mysqlConnect) {
 			die('Connection error.');
