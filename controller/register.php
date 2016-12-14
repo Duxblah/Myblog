@@ -29,7 +29,7 @@ if (empty($errors)) {
 	$values = [escapeVar($_POST['pseudo']), escapeVar($_POST['email']), sha1($_POST['password']), '1'];
 
 	if (insert('user', $fields, $values)) {
-		$message = 'You are now registered !';
+		$message = 'Votre compte a bien été créé ! Connectez-vous dés maintenant !';
 	} else {
 		$message = 'Intern error.';
 	}

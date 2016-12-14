@@ -29,6 +29,9 @@
 			<?php } ?>
 		</ul>
 	</div>
+	<?php if (isset($_POST['err_password'])) { echo '<span class="error msg_login_error">' . $_POST['err_password'] . '</span>'; } ?>
+	<?php if (isset($_POST['err_login'])) { echo '<span class="error msg_login_error">' . $_POST['err_login'] . '</span>'; } ?>
+	<?php if (isset($_POST['err_pseudo'])) { echo '<span class="error msg_login_error">' . $_POST['err_pseudo'] . '</span>'; } ?>
 	<div id="container">
 		<?php include('views/' . $template.'.php'); ?>
 	</div>

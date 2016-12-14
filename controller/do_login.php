@@ -22,7 +22,7 @@ $errors = auth();
 $template = 'home';
 
 if (empty($errors)) {
-	$message = 'You are logged.';
+	$message = 'Vous êtes maintenant connecté(e) !';
 } else {
 	foreach ($errors as $key => $error) {
 		$_POST['err_' . $key] = $error;

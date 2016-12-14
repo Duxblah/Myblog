@@ -28,7 +28,7 @@ include('nav_admin.php');
        <td><?= $content; ?><a href="?p=single_article&id=<?= $article['id'] ?>"></td>
        <td><a class="link_author" href="?p=single_user&id=<?= $article['id_user'] ?>"><?= $article['user']; ?></a></td>
        <td><?= $article['created'] ?></td>
-       <td><a href="?p=delete_article_admin&id=<?= $article['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i>Supprimer </a></td>
+       <td class="column_delete"><a href="?p=delete_article_admin&id=<?= $article['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i>Supprimer </a></td>
     </tr>
 	<?php endforeach; ?>
 </table>

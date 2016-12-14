@@ -10,7 +10,7 @@ function selectUserById ($id) {
 }
 
 function selectUserByPseudo ($pseudo) {
-	return select('user', [], 'WHERE pseudo = "' . $pseudo . '"')[0];
+	return select('user', [], 'WHERE pseudo = "' . $pseudo . '"');
 }
 
 function selectUserByEmail ($email) {
