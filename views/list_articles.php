@@ -1,5 +1,5 @@
 
-<h1>Derniers actualités</h1>
+<h1>Dernières actualités</h1>
 <?php foreach ($articles as $article): ?>
 	<?php
 		$content = $article['content'];

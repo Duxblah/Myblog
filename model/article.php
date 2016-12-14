@@ -17,7 +17,7 @@ function selectArticleByTitle ($title) {
 }
 
 function selectArticleBySearchTitle ($search) {
-	return select('article', ['article.*, user.pseudo as user, count(comment.id) as nbr'], 'JOIN user ON user.id = article.id_user LEFT JOIN comment ON article.id = comment.id_article WHERE title LIKE "%' . $search . '%" GROUP BY article.id ORDER BY article.created DESC ');
+	return select('article', ['article.*, user.pseudo as user, count(comment.id) as nbr'], 'JOIN user ON user.id = article.id_user LEFT JOIN comment ON article.id = comment.id_article WHERE title LIKE "%' . $search . '%" OR article.content LIKE "%' . $search . '%" GROUP BY article.id ORDER BY article.created DESC ');
 }
 
 function selectArticleByCreationDate ($date) {
@@ -30,6 +30,9 @@ function selectArticleByUpdatedDate ($date) {
 
 function selectUserArticles ($id) {
 	return select('user', ['article.*'], 'JOIN article ON user.id = article.id_user WHERE user.id = ' . $id);
+}
+function selectArticleUser ($id) {
+	return select('article', ['article.id_user'], 'WHERE article.id = ' . $id);
 }
 
 function insertUserArticle ($values, $fields) {

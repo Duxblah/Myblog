@@ -294,7 +294,14 @@ td, th {
 	font-size:13px;
 }
 
+.column_delete > a{
+	color:red;
+}
+
 #list_articles_admin tr:nth-child(even) {
+    background-color: #dddddd;
+}
+#list_users_admin tr:nth-child(even) {
     background-color: #dddddd;
 }
 .trash_admin{
