@@ -13,6 +13,10 @@ function selectUserByPseudo ($pseudo) {
 	return select('user', [], 'WHERE pseudo = "' . $pseudo . '"');
 }
 
+function selectUserBySearchPseudo ($search) {
+	return select('user', [], 'WHERE pseudo LIKE "%' . $search . '%"');
+}
+
 function selectUserByEmail ($email) {
 	return select('user', [], 'WHERE email = "' . $email . '"')[0];
 }

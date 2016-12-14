@@ -2,13 +2,18 @@
 include('nav_admin.php');
 ?>
 <table id="list_users_admin">
-	<h1>Liste des utilisateurs</h1>
-	<?php if (isset($errors)) {
-		if(empty($errors))
-			echo '<tr class="table_valide"><td colspan=5><span class="valide">Le rôle a bien été changé</span></td></tr>'; 
-		else
-			echo '<tr class="table_error"><td colspan=5><span class="error">Erreur lors de la suppression</span></td></tr>'; 
-	} ?>
+	<div class="title_list_users">
+		<h1>Liste des utilisateurs</h1>
+		<?php if (isset($errors)) {
+			if(empty($errors))
+				echo '<tr class="table_valide"><td colspan=5><span class="valide">Le rôle a bien été changé</span></td></tr>'; 
+			else
+				echo '<tr class="table_error"><td colspan=5><span class="error">Erreur lors de la suppression</span></td></tr>'; 
+		} ?>
+		<form action="?p=search_users" method="POST" id="form_users">
+			<input id="input_search_admin" name="search" type="text" placeholder="Recherche...">
+		</form>
+	</div>
 	<tr>
        <th>Pseudo</th>
        <th>Email</th>
@@ -16,6 +21,11 @@ include('nav_admin.php');
        <th>Inscrit le</th>
        <th>Actions</th>
    </tr>
+   	<?php if(empty($users)){ ?>
+   		<tr>
+   			<td colspan=5>Aucun utilisateur trouvé</td>
+   		</tr>
+   	<?php } ?>
 	<?php foreach ($users as $user): ?>
 	<tr>
        <td><a href="?p=single_user&id=<?= $user['id'] ?>"><?= $user['pseudo']; ?></a></td>

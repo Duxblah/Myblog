@@ -1,5 +1,10 @@
 
 <h1>Dernières actualités</h1>
+<?php if(empty($articles)){ ?>
+	<div class="article_info" >
+		Aucun article trouvé
+	</div>
+<?php } ?>
 <?php foreach ($articles as $article): ?>
 	<?php
 		$content = $article['content'];

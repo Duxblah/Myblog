@@ -351,11 +351,29 @@ td, th {
 	width:50%;
 }
 
-#form_articles{
+#form_articles, #form_users{
+	display: inline;
+}
+.title_list_users > h1{
+	display: inline;
+	margin-right: 30px;
+}
+#input_btn_search{
+	border: none;
+    color: white;
+    padding: 10px 0px;
+    text-decoration: none;
+    font-size: 21px;
+    background-color: #819FF7;
+}
+
+#input_search_admin{
+	width:200px;
 	display: inline;
 }
 
-#input_btn_search{
+#input_btn_search_admin{
+	height:30px;
 	border: none;
     color: white;
     padding: 10px 0px;

@@ -14,5 +14,5 @@
 	<p>
 	Etiam sit amet mattis nulla. Etiam mattis ac arcu vel ultrices. Quisque consectetur tincidunt purus, a dictum quam posuere placerat. Donec euismod, neque tristique porta porttitor, erat dui pretium nisl, eu dapibus elit quam sed elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam erat volutpat. Aliquam eleifend risus quis ullamcorper pharetra. Vestibulum justo orci, pellentesque vel gravida eget, fermentum vel massa. Vivamus dapibus erat finibus interdum fringilla. Morbi posuere, sapien in faucibus fermentum, felis tellus scelerisque purus, ut consequat nisi urna nec est. Maecenas in lobortis turpis.
 	</p>
-	<div id="author_signature">Auteur: <a href="?p=single_user&id=1"> Kize </a></div>
+	<div id="author_signature">Auteur: <a href="?p=single_user&id=10"> Kize </a></div>
 </div>

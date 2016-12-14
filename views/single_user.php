@@ -20,7 +20,7 @@
 		<?php foreach ($user['articles'] as $article): ?>
 			<?php
 				$content = $article['content'];
-				if (strlen($content) > 200) {
+				if (strlen($content) > 400) {
 					$content = substr($content, 0, 400) . '...';
 				}
 			?>
