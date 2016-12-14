@@ -79,7 +79,14 @@ ul#nav_blog li a:hover {
 	cursor: pointer;
 	color: #BBB;
 }
-
+#nav_profil{
+	float:right;
+	margin-right: 20px;
+}
+#nav_deco{
+	float:right;
+	margin-right: 20px;
+}
 #form-login {
 	float: right;
 }

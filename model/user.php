@@ -6,7 +6,7 @@ function selectAllUsers () {
 }
 
 function selectUserById ($id) {
-	return select('user', [], 'WHERE id = ' . $id)[0];
+	return select('user', ['user.* , role.label as label'], 'JOIN role ON role.id = user.id_role WHERE user.id = ' . $id)[0];
 }
 
 function selectUserByPseudo ($pseudo) {
@@ -31,6 +31,7 @@ function userAuth ($pseudo, $password) {
 			$errors['pseudo'] = 'Incorrect pseudo/password combinaison.';
 		} else {
 			$_SESSION['user'] = $user[0]['id'];
+			$_SESSION['role'] = $user[0]['id_role'];
 		}
 	}
 

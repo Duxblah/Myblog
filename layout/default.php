@@ -21,8 +21,11 @@
 					<?php include('views/login.php'); ?>
 				</li>
 			<?php } else { ?>
-				<li><a href="?p=new_article">Nouveau</a></li>
-				<li><a href="?p=logout">Déconnexion</a></li>
+				<?php if (isset($_SESSION['role']) && !empty($_SESSION['role'] > 1)) { ?>
+					<li><a href="?p=new_article">Nouveau</a></li>
+				<?php } ?>
+				<li id="nav_deco" ><a href="?p=logout">Déconnexion</a></li>
+				<li id="nav_profil"><a href="<?php echo "?p=single_user&id=".$_SESSION['user']; ?>">Profil</a></li>
 				<?php if ($_SESSION['user']) { ?>
 					<li><a href="?p=admin">Admin</a></li>
 				<?php } ?>

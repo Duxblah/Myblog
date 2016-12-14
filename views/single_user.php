@@ -1,5 +1,5 @@
-<h1>Profil de <?= $user['pseudo'] ?></h1>
-
+<h1>Profil de <?php echo $user['pseudo']; ?></h1>
+<h2>Rôle: <?php echo $user['label']; ?></h2>
 <?php if (isset($_SESSION['user']) && $user['id'] == $_SESSION['user']) { ?>
 	<div id="delete_user"><a href="?p=delete_user&id=<?= $user['id'] ?>"><i class="fa fa-times" aria-hidden="true"></i>Supprimer mon compte </a></div>
 <?php } ?>
@@ -24,7 +24,6 @@
 					$content = substr($content, 27) . '...';
 				}
 			?>
-
 			<tr>
 				<td><a href="?p=single_article&id=<?= $article['id'] ?>"><?= $article['title']; ?></a></td>
 				<td><a href="?p=single_article&id=<?= $article['id'] ?>"><?= $content; ?></a></td>

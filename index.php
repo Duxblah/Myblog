@@ -15,10 +15,11 @@ startConnection();
 if (! $p) {
 	$p = 'home';
 }
-
 $template = $p;
 $title = $p;
 
+var_dump(isset($_SESSION['user']));
+var_dump(isset($_SESSION['role']));
 // Controller
 if ($p !== 'home') {
 	if (file_exists('controller/' . $p . '.php')) {
