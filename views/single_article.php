@@ -17,17 +17,19 @@
 <hr>
 
 <div id="comments_container">
-	<div id="add_comment_container">
-		<h3>Commentaires</h3>
-		<form action="?p=do_comment" method="POST" name="form_comment">
-			<input type="hidden" name="article_id" value="<?php echo $article['id'] ?>">
-			<textarea id="textarea_comment" rows="4" cols="50" name="content"><?php if (isset($_POST['content'])) { echo $_POST['content']; } ?></textarea>
-			<?php if (isset($_POST['err_content'])) { echo '<span class="error">' . $_POST['err_content'] . '</span>'; } ?>
-			<?php if (isset($_POST['err_comment'])) { echo '<span class="error">' . $_POST['err_comment'] . '</span>'; } ?>
+	<?php if (isset($_SESSION['user'])) {?>
+		<div id="add_comment_container">
+			<h3>Commentaires</h3>
+			<form action="?p=do_comment" method="POST" name="form_comment">
+				<input type="hidden" name="article_id" value="<?php echo $article['id'] ?>">
+				<textarea id="textarea_comment" rows="4" cols="50" name="content"><?php if (isset($_POST['content'])) { echo $_POST['content']; } ?></textarea>
+				<?php if (isset($_POST['err_content'])) { echo '<span class="error">' . $_POST['err_content'] . '</span>'; } ?>
+				<?php if (isset($_POST['err_comment'])) { echo '<span class="error">' . $_POST['err_comment'] . '</span>'; } ?>
 
-			<p><input value="Ajouter" type="submit"></p>
-		</form>
-	</div>
+				<p><input value="Ajouter" type="submit"></p>
+			</form>
+		</div>
+	<?php } ?>
 	<hr>
 	<div id="list_comments_container">
 		<?php foreach ($comments as $comment): ?>
