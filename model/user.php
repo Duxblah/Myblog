@@ -18,7 +18,7 @@ function selectUserBySearchPseudo ($search) {
 }
 
 function selectUserByEmail ($email) {
-	return select('user', [], 'WHERE email = "' . $email . '"')[0];
+	return select('user', [], 'WHERE email = "' . $email . '"');
 }
 
 function selectUserByArticleId ($id) {

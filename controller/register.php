@@ -1,13 +1,29 @@
 <?php
+require_once('model/article.php');
+
 function check_signup () {
 	$errors = [];
 
 	if (empty($_POST['pseudo'])) {
 		$errors['pseudo'] = 'Pseudo must be indicated.';
+	} 
+
+	$checkPseudo = selectUserByPseudo($_POST['pseudo']);
+	if($checkPseudo){
+		$errors['pseudo'] = 'Pseudo déjà utilisé !';
 	}
+
 	if (empty($_POST['email'])) {
 		$errors['email'] = 'Email must be indicated.';
+	} else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+		$errors['email'] = 'Email not valide';
 	}
+
+	$checkEmail = selectUserByEmail ($_POST["email"]);
+	if($checkEmail){
+		$errors['email'] = 'Un compte existe déjà avec cet email !';
+	}
+
 	if (empty($_POST['password'])) {
 		$errors['password'] = 'Password must be indicated.';
 	}
