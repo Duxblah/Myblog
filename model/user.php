@@ -6,7 +6,7 @@ function selectAllUsers () {
 }
 
 function selectUserById ($id) {
-	return select('user', ['user.* , role.label as label'], 'JOIN role ON role.id = user.id_role WHERE user.id = ' . $id)[0];
+	return select('user', ['user.* , role.label as label'], 'LEFT JOIN role ON role.id = user.id_role WHERE user.id = ' . $id)[0];
 }
 
 function selectUserByPseudo ($pseudo) {
@@ -22,7 +22,11 @@ function selectUserByEmail ($email) {
 }
 
 function selectUserByArticleId ($id) {
-	return select('user', ['user.*'], 'JOIN article ON user.id = article.user_id WHERE article.id = ' . $id);
+	return select('user', ['user.*'], 'LEFT JOIN article ON user.id = article.id_user WHERE article.id = ' . $id)[0];
+}
+
+function selectUserByCommentId ($id) {
+	return select('user', ['user.*'], 'LEFT JOIN comment ON user.id = comment.id_user WHERE comment.id = ' . $id)[0];
 }
 
 function userAuth ($pseudo, $password) {
@@ -61,7 +65,17 @@ function updateUser ($fields, $values) {
 		die;
 	}
 }
+
 function deleteUser ($id) {
-	deleteUserArticles($id);
-	return delete('user', 'WHERE id = ' . $id);
+	if (! isset($_SESSION['user']) || 
+		(
+			$_SESSION['user'] != selectUserById($id)['id'] 
+			&& (! isset($_SESSION['role']) || $_SESSION['role'] != 3))
+		) {
+		header('Location: ?');
+	} else {
+		deleteUserArticles($id);
+		deleteUserComments($id);
+		return delete('user', 'WHERE id = ' . $id);
+	}
 }

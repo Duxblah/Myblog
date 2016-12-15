@@ -1,4 +1,5 @@
 <?php
+require_once('user.php');
 require_once('comment.php');
 
 function selectAllArticles () {
@@ -31,6 +32,7 @@ function selectArticleByUpdatedDate ($date) {
 function selectUserArticles ($id) {
 	return select('user', ['article.*'], 'JOIN article ON user.id = article.id_user WHERE user.id = ' . $id);
 }
+
 function selectArticleUser ($id) {
 	return select('article', ['article.id_user'], 'WHERE article.id = ' . $id);
 }
@@ -60,25 +62,41 @@ function updateArticle ($fields, $values) {
 }
 
 function deleteArticle ($id) {
-	deleteCommentsOfArticle($id);
-
 	$conditions = 'WHERE id';
 
 	if (is_array($id)) {
 		$conditions .= ' IN (';
 
 		foreach ($id as $index => $i) {
-			if ($index != 0) {
-				$conditions .= ', ';
-			}
+			if (! isset($_SESSION['user']) || 
+				(
+					$_SESSION['user'] != selectUserByArticleId($i)['id'] 
+					&& (! isset($_SESSION['role']) || $_SESSION['role'] != 3))
+				) {
+				header('Location: ?');
+			} else {
+				if ($index != 0) {
+					$conditions .= ', ';
+				}
 
-			$conditions .= $i;
+				$conditions .= $i;
+			}
 		}
 
 		$conditions .= ')';
 	} else {
-		$conditions .= ' = ' . $id;
+		if (! isset($_SESSION['user']) || 
+			(
+				$_SESSION['user'] != selectUserByArticleId($id)['id'] 
+				&& (! isset($_SESSION['role']) || $_SESSION['role'] != 3))
+			) {
+			header('Location: ?');
+		} else {
+			$conditions .= ' = ' . $id;
+		}
 	}
+
+	deleteCommentsOfArticle($id);
 
 	return delete('article', $conditions);
 }

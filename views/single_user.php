@@ -3,7 +3,7 @@
 <?php if (isset($_SESSION['user']) && $user['id'] == $_SESSION['user']) { ?>
 	<div id="delete_user"><a href="?p=delete_user&id=<?= $user['id'] ?>"><i class="fa fa-times" aria-hidden="true"></i>Supprimer mon compte </a></div>
 <?php } ?>
-if()
+
 <h2></h2>
 
 <table id="list-articles">

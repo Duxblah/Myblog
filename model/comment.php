@@ -1,4 +1,5 @@
 <?php 
+require_once('user.php');
 
 function selectCommentById ($id) {
 	return select('comment', [], 'WHERE id = ' . $id)[0];
@@ -27,16 +28,36 @@ function deleteComment ($id) {
 		$conditions .= ' IN (';
 
 		foreach ($id as $index => $i) {
-			if ($index != 0) {
-				$conditions .= ', ';
-			}
+			if (! isset($_SESSION['user']) || 
+				(
+					$_SESSION['user'] != selectUserByCommentId($i)['id'] 
+					&& (! isset($_SESSION['role']) || $_SESSION['role'] != 3))
+				) {
+				echo 'comment ' . $i;
+				var_dump(selectUserByCommentId($i)['id']);die;
+				header('Location: ?');
+			} else {
+				if ($index != 0) {
+					$conditions .= ', ';
+				}
 
-			$conditions .= $i;
+				$conditions .= $i;
+			}
 		}
 
 		$conditions .= ')';
 	} else {
-		$conditions .= ' = ' . $id;
+		if (! isset($_SESSION['user']) || 
+			(
+				$_SESSION['user'] != selectUserByCommentId($id)['id'] 
+				&& (! isset($_SESSION['role']) || $_SESSION['role'] != 3))
+			) {
+			echo 'comment ' . $i;
+			var_dump(selectUserByCommentId($id)['id']);die;
+			header('Location: ?');
+		} else {
+			$conditions .= ' = ' . $id;
+		}
 	}
 	
 	return delete('comment', $conditions);
@@ -63,3 +84,20 @@ function deleteCommentsOfArticle ($id) {
 
 	return deleteComment($ids);
 }
+
+function deleteUserComments ($id) {
+	$comments = selectCommentsByUserId($id);
+	$ids = '';
+	echo 'i';
+
+	foreach ($comments as $index => $comment) {
+		if ($index != 0) {
+			$ids .= ', ';
+		}
+
+		$ids .= $comment['id'];
+	}
+
+	return delete('comment', 'WHERE id IN (' . $ids . ')');
+}
+
