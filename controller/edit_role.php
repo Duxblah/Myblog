@@ -16,7 +16,7 @@ function check_role () {
 }
 
 $errors = check_role();
-
+$roles = selectAllRoles();
 if (empty($errors)) {
 	$fields = ['id','id_role'];
 	$values = [escapeVar($_GET['id']),escapeVar($_POST['role'])];
