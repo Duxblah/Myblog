@@ -1,7 +1,10 @@
 <a href="?p=list_articles"><< Retour aux articles</a>
-
+<?php if($article['id_image'] != 0){ ?>
+	<div id="img_article">
+		<img src="<?php echo "images/img_article_".$article['id_image'].".".$article['ext_image']; ?>">
+	</div>
+<?php } ?>
 <h1 class="title_article"><?= $article['title'] ?></h1>
-
 <div class="info_single_article">
 	Posté le <?= $article['created'] ?><br>
 </div>

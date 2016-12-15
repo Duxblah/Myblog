@@ -37,6 +37,10 @@ function selectArticleUser ($id) {
 	return select('article', ['article.id_user'], 'WHERE article.id = ' . $id);
 }
 
+function selectMaxImageArticle () {
+	return select('article', ['max(article.id_image) as idImage'], '')[0];
+}
+
 function insertUserArticle ($values, $fields) {
 	return insert('article', $values, $fields);
 }
@@ -80,6 +84,10 @@ function deleteArticle ($id) {
 				}
 
 				$conditions .= $i;
+				$article = selectArticleById($i);
+				if(isset($article['id_image']) && $article['id_image'] != 0 && file_exists("images/img_article_".$article['id_image'].".".$article['ext_image'])){
+					unlink("images/img_article_".$article['id_image'].".".$article['ext_image']);
+				}
 			}
 		}
 
@@ -93,11 +101,14 @@ function deleteArticle ($id) {
 			header('Location: ?');
 		} else {
 			$conditions .= ' = ' . $id;
+			$article = selectArticleById($id);
+			if(isset($article['id_image']) && $article['id_image'] != 0 && file_exists("images/img_article_".$article['id_image'].".".$article['ext_image'])){
+				unlink("images/img_article_".$article['id_image'].".".$article['ext_image']);
+			}
 		}
 	}
 
 	deleteCommentsOfArticle($id);
-
 	return delete('article', $conditions);
 }
 

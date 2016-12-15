@@ -388,3 +388,7 @@ td, th {
 .fa_single_user:last-child > a{
 	color:red;
 }
+
+#img_article{
+	margin: 10px 0;
+}
